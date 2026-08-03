@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1200" viewBox="0 0 900 1200">
+  <rect width="900" height="1200" fill="#F5F2EA"/>
+  <circle cx="78" cy="72" r="24" fill="#182236"/>
+  <text x="78" y="80" text-anchor="middle" fill="#F5F2EA" font-size="22" font-family="Microsoft YaHei, sans-serif">考</text>
+  <text x="116" y="78" fill="#182236" font-size="18" font-weight="700" letter-spacing="3" font-family="Microsoft YaHei, sans-serif">关系考古局</text>
+  <text x="70" y="170" fill="#182236" font-size="52" font-weight="600" font-family="Microsoft YaHei, sans-serif">关系考古，不等于</text>
+  <text x="70" y="235" fill="#E76F51" font-size="52" font-weight="600" font-family="Microsoft YaHei, sans-serif">给感情打一个分</text>
+  <text x="70" y="280" fill="#6B6F76" font-size="18" font-family="Microsoft YaHei, sans-serif">从消息证据出发，逐层恢复一段关系发生过的样子</text>
+
+  <g font-family="Microsoft YaHei, sans-serif">
+    <rect x="70" y="350" width="760" height="150" rx="8" fill="#FBFAF5" stroke="#D8D3C7"/>
+    <rect x="70" y="350" width="12" height="150" fill="#315FCD"/>
+    <text x="112" y="396" fill="#315FCD" font-size="14" font-weight="700" letter-spacing="2">01 / FACT</text>
+    <text x="112" y="438" fill="#182236" font-size="30" font-weight="700">事实层</text>
+    <text x="272" y="433" fill="#555B64" font-size="20">谁在什么时候说了什么？</text>
+    <text x="272" y="468" fill="#777B81" font-size="16">时间 · 参与者 · 消息编号 · 联系频率</text>
+
+    <rect x="92" y="525" width="738" height="150" rx="8" fill="#FBFAF5" stroke="#D8D3C7"/>
+    <rect x="92" y="525" width="12" height="150" fill="#6F8E6B"/>
+    <text x="134" y="571" fill="#6F8E6B" font-size="14" font-weight="700" letter-spacing="2">02 / EVENT</text>
+    <text x="134" y="613" fill="#182236" font-size="30" font-weight="700">事件层</text>
+    <text x="294" y="608" fill="#555B64" font-size="20">哪些消息共同构成一件事？</text>
+    <text x="294" y="643" fill="#777B81" font-size="16">约定 · 支持 · 失约 · 修复 · 闭环</text>
+
+    <rect x="114" y="700" width="716" height="150" rx="8" fill="#FBFAF5" stroke="#D8D3C7"/>
+    <rect x="114" y="700" width="12" height="150" fill="#E3B856"/>
+    <text x="156" y="746" fill="#9A741C" font-size="14" font-weight="700" letter-spacing="2">03 / PATTERN</text>
+    <text x="156" y="788" fill="#182236" font-size="30" font-weight="700">模式层</text>
+    <text x="316" y="783" fill="#555B64" font-size="20">相似情境里，回应如何变化？</text>
+    <text x="316" y="818" fill="#777B81" font-size="16">发起方式 · 回应节奏 · 重复出现的互动</text>
+
+    <rect x="136" y="875" width="694" height="150" rx="8" fill="#182236"/>
+    <rect x="136" y="875" width="12" height="150" fill="#E76F51"/>
+    <text x="178" y="921" fill="#EFA38F" font-size="14" font-weight="700" letter-spacing="2">04 / NARRATIVE</text>
+    <text x="178" y="963" fill="#FFFFFF" font-size="30" font-weight="700">叙事层</text>
+    <text x="338" y="958" fill="#E5E7EA" font-size="20">这一年的变化如何被克制地讲述？</text>
+    <text x="338" y="993" fill="#AEB3BA" font-size="16">观察与推断分开 · 不做心理诊断</text>
+  </g>
+
+  <line x1="70" y1="1090" x2="830" y2="1090" stroke="#CFC9BC"/>
+  <text x="70" y="1135" fill="#182236" font-size="18" font-weight="700" font-family="Microsoft YaHei, sans-serif">硬规则</text>
+  <text x="155" y="1135" fill="#555B64" font-size="18" font-family="Microsoft YaHei, sans-serif">每个事实结论绑定证据 ID；证据不足时写“无法判断”</text>
+</svg>

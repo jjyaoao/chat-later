@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="用聊天证据重建一年的关系变化" />
+    <title>关系考古局 · 聊天关系年鉴</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="grain"></div>
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="关系考古局首页">
+        <span class="brand-mark">考</span>
+        <span>关系考古局</span>
+      </a>
+      <div class="model-chip"><i></i> Doubao-Seed-Evolving</div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="eyebrow">RELATIONSHIP ARCHAEOLOGY / 2025</div>
+        <h1>把一整年的聊天，<br /><em>还原成关系发生过的样子。</em></h1>
+        <p class="hero-copy">
+          它不猜谁更爱谁。它沿着时间去找：一句约定后来有没有发生，一次摩擦之后有没有行动，那些隔了几个月才出现的回应。
+        </p>
+        <div class="hero-tags">
+          <span>跨月线索</span><span>证据可追溯</span><span>本地脱敏</span><span>二次审计</span>
+        </div>
+      </section>
+
+      <section class="clue-showcase" aria-label="一条跨月约定的证据链示例">
+        <div class="clue-intro">
+          <span class="card-index">A CLUE ACROSS TIME / 一条跨月线索</span>
+          <h2>一句“等忙完去骑车”，<br />后来真的发生了吗？</h2>
+          <p>搜索只能找到“骑车”。关系考古要找的是：提出、等待、重新排期，以及最后落地。</p>
+        </div>
+        <div class="clue-track">
+          <article class="clue-card coral">
+            <span>03 / 09 · 发起</span>
+            <blockquote>“周末要不要去江边骑车？”</blockquote>
+            <b>E00010</b>
+          </article>
+          <div class="clue-arrow"><i></i><small>19 天</small></div>
+          <article class="clue-card blue">
+            <span>03 / 28 · 重排</span>
+            <blockquote>“必须，四月第一个周六。”</blockquote>
+            <b>E00015</b>
+          </article>
+          <div class="clue-arrow"><i></i><small>8 天</small></div>
+          <article class="clue-card green">
+            <span>04 / 05 · 落地</span>
+            <blockquote>“我到地铁口了，今天风有点大。”</blockquote>
+            <b>E00016</b>
+          </article>
+        </div>
+        <div class="clue-result"><strong>27 天 · 3 个节点 · 1 条完整故事线</strong><span>每个判断都可以点回原始消息</span></div>
+      </section>
+
+      <section class="workspace" aria-label="聊天记录分析工作台">
+        <div class="input-panel">
+          <div class="panel-heading">
+            <div><span class="step">01</span><h2>放入聊天记录</h2></div>
+            <button id="sampleButton" class="text-button">载入虚构样例 →</button>
+          </div>
+          <label class="dropzone" for="fileInput">
+            <input id="fileInput" type="file" accept=".txt,.md,.csv" />
+            <span class="drop-icon">↥</span>
+            <strong>拖入 TXT / MD / CSV</strong>
+            <small>或点击选择文件 · 当前演示上限 30MB</small>
+          </label>
+          <div class="or"><span>或粘贴文本</span></div>
+          <textarea id="chatInput" spellcheck="false" placeholder="[2025-01-03 23:27] 林舟: 辛苦啦，先喝水，想吐槽我就听着"></textarea>
+          <details class="format-help">
+            <summary>支持什么格式？</summary>
+            <p>推荐每行：<code>[YYYY-MM-DD HH:MM] 姓名: 正文</code>。也支持不带方括号的同类格式。</p>
+          </details>
+        </div>
+
+        <aside class="control-panel">
+          <div class="panel-heading compact"><div><span class="step">02</span><h2>选择分析方式</h2></div></div>
+          <label class="switch-row">
+            <span><strong>参与者化名</strong><small>姓名在本地服务中替换为 A / B</small></span>
+            <input id="aliasToggle" type="checkbox" checked /><i></i>
+          </label>
+          <label class="switch-row">
+            <span><strong>深度证据审计</strong><small>生成后再读原文，检查每条结论</small></span>
+            <input id="deepToggle" type="checkbox" checked /><i></i>
+          </label>
+          <div class="privacy-note">
+            <span>⌁</span>
+            <p><strong>先在本地做预处理</strong>手机号、邮箱、身份证和长号码会被遮盖。选择分析后，脱敏文本才会发送至模型 API。</p>
+          </div>
+          <button id="analyzeButton" class="primary-button" disabled>
+            <span>开始关系考古</span><b>↗</b>
+          </button>
+          <div id="previewStats" class="preview-stats" hidden></div>
+        </aside>
+      </section>
+
+      <section id="progressSection" class="progress-section" hidden>
+        <div class="loader-ring"></div>
+        <div><div class="eyebrow">AGENT IS WORKING</div><h2 id="progressTitle">正在建立证据索引</h2><p id="progressCopy">长记录会需要一点时间，请不要关闭页面。</p></div>
+      </section>
+
+      <section id="reportSection" class="report" hidden>
+        <div class="report-topline">
+          <div><div class="eyebrow">YOUR RELATIONSHIP YEARBOOK</div><h2 id="reportTitle"></h2><p id="reportSubtitle"></p></div>
+          <div class="report-actions"><button id="jsonButton">导出 JSON</button><button id="printButton">打印报告</button></div>
+        </div>
+
+        <div class="summary-grid">
+          <article class="narrative-card"><span class="card-index">00 / 总述</span><p id="overview"></p><div id="engineBadge" class="engine-badge"></div></article>
+          <div id="statsCards" class="stats-cards"></div>
+        </div>
+
+        <article class="report-card pulse-card">
+          <div class="card-heading"><div><span class="card-index">01 / 时间</span><h3>关系脉搏</h3></div><div class="legend"><span class="warm">关系温度</span><span class="friction">摩擦信号</span></div></div>
+          <div id="pulseChart" class="pulse-chart"></div>
+          <div id="monthNotes" class="month-notes"></div>
+        </article>
+
+        <div class="two-column">
+          <article class="report-card"><div class="card-heading"><div><span class="card-index">02 / 内容</span><h3>共同话题迁徙</h3></div></div><div id="topics" class="topics"></div></article>
+          <article class="report-card"><div class="card-heading"><div><span class="card-index">03 / 线索</span><h3>还没说完的约定</h3></div></div><div id="openLoops" class="open-loops"></div></article>
+        </div>
+
+        <article class="report-card">
+          <div class="card-heading"><div><span class="card-index">04 / 事件</span><h3>这一年的转折点</h3></div></div>
+          <div id="turningPoints" class="timeline"></div>
+        </article>
+
+        <div class="two-column">
+          <article class="report-card"><div class="card-heading"><div><span class="card-index">05 / 回应</span><h3>互相托举的时刻</h3></div></div><div id="supportMoments" class="story-list"></div></article>
+          <article class="report-card"><div class="card-heading"><div><span class="card-index">06 / 模式</span><h3>重复出现的互动</h3></div></div><div id="patterns" class="story-list"></div></article>
+        </div>
+
+        <article class="letter-card"><span>写在年末</span><blockquote id="closingLetter"></blockquote></article>
+        <p id="confidenceNote" class="confidence-note"></p>
+      </section>
+    </main>
+
+    <dialog id="evidenceDialog">
+      <button id="closeDialog" aria-label="关闭">×</button><span class="card-index">ORIGINAL EVIDENCE</span><div id="evidenceBody"></div>
+    </dialog>
+    <footer><span>关系考古局 · 一个轻量化趣味实践</span><span>Powered by Doubao-Seed-Evolving</span></footer>
+    <script src="/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,3 @@
+# The demo uses only Python's standard library.
+# Python 3.10+ is recommended.
+

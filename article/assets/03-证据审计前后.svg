@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1200" viewBox="0 0 900 1200">
+  <rect width="900" height="1200" fill="#F5F2EA"/>
+  <text x="70" y="95" fill="#6B6F76" font-size="14" font-weight="700" letter-spacing="3" font-family="Microsoft YaHei, sans-serif">EVIDENCE AUDIT / BEFORE &amp; AFTER</text>
+  <text x="70" y="165" fill="#182236" font-size="50" font-weight="600" font-family="Microsoft YaHei, sans-serif">报告生成后，</text>
+  <text x="70" y="228" fill="#E76F51" font-size="50" font-weight="600" font-family="Microsoft YaHei, sans-serif">再回原文查一遍</text>
+  <text x="70" y="273" fill="#6B6F76" font-size="18" font-family="Microsoft YaHei, sans-serif">把“读起来合理”变成“点回去能够核对”</text>
+
+  <g font-family="Microsoft YaHei, sans-serif">
+    <text x="70" y="350" fill="#A5513D" font-size="14" font-weight="700" letter-spacing="2">DRAFT / 审计前</text>
+    <rect x="70" y="375" width="760" height="220" rx="10" fill="#FFF7F3" stroke="#E7A28F"/>
+    <text x="105" y="425" fill="#182236" font-size="18" font-weight="700">结论</text>
+    <text x="105" y="465" fill="#555B64" font-size="23">“两个人的关系已经明显改善。”</text>
+    <text x="105" y="520" fill="#A5513D" font-size="16" font-weight="700">引用证据</text>
+    <rect x="210" y="495" width="104" height="40" rx="20" fill="#F7D7CE"/>
+    <text x="262" y="521" text-anchor="middle" fill="#A5513D" font-size="15" font-weight="700">E99999</text>
+    <text x="105" y="565" fill="#A5513D" font-size="15">问题：证据不存在，且结论越过了可观察事实</text>
+
+    <line x1="450" y1="595" x2="450" y2="650" stroke="#9C998F" stroke-width="2"/>
+    <path d="M438 637 L450 653 L462 637" fill="none" stroke="#9C998F" stroke-width="2"/>
+
+    <rect x="125" y="665" width="650" height="155" rx="78" fill="#182236"/>
+    <text x="450" y="715" text-anchor="middle" fill="#FFFFFF" font-size="23" font-weight="700">Seed Evolving 证据审计</text>
+    <text x="450" y="754" text-anchor="middle" fill="#C5C9CF" font-size="16">ID 存在？ · 原文支持？ · 观察/推断分开？ · 越界判断？</text>
+    <text x="450" y="789" text-anchor="middle" fill="#EFA38F" font-size="15">完整原文 + 初稿 → 修订后的结构化 JSON</text>
+
+    <line x1="450" y1="820" x2="450" y2="875" stroke="#9C998F" stroke-width="2"/>
+    <path d="M438 862 L450 878 L462 862" fill="none" stroke="#9C998F" stroke-width="2"/>
+
+    <text x="70" y="915" fill="#567052" font-size="14" font-weight="700" letter-spacing="2">AUDITED / 审计后</text>
+    <rect x="70" y="940" width="760" height="210" rx="10" fill="#F1F6EC" stroke="#7D9B76"/>
+    <text x="105" y="990" fill="#182236" font-size="18" font-weight="700">可观察结论</text>
+    <text x="105" y="1030" fill="#555B64" font-size="21">“记录中出现了与先前反馈对应的行为调整。”</text>
+    <text x="105" y="1085" fill="#567052" font-size="16" font-weight="700">有效证据</text>
+    <rect x="210" y="1060" width="104" height="40" rx="20" fill="#DCE9D7"/>
+    <text x="262" y="1086" text-anchor="middle" fill="#567052" font-size="15" font-weight="700">E00022</text>
+    <rect x="326" y="1060" width="104" height="40" rx="20" fill="#DCE9D7"/>
+    <text x="378" y="1086" text-anchor="middle" fill="#567052" font-size="15" font-weight="700">E00026</text>
+    <text x="105" y="1130" fill="#567052" font-size="15">事实有出处，推断保持克制，点击编号可回看原文</text>
+  </g>
+</svg>

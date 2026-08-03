@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1200" viewBox="0 0 900 1200">
+  <rect width="900" height="1200" fill="#F5F2EA"/>
+  <text x="70" y="95" fill="#6B6F76" font-size="14" font-weight="700" letter-spacing="3" font-family="Microsoft YaHei, sans-serif">AGENT RUNTIME / EVIDENCE FIRST</text>
+  <text x="70" y="165" fill="#182236" font-size="52" font-weight="600" font-family="Microsoft YaHei, sans-serif">一次报告，</text>
+  <text x="70" y="228" fill="#315FCD" font-size="52" font-weight="600" font-family="Microsoft YaHei, sans-serif">三次模型工作</text>
+  <text x="70" y="273" fill="#6B6F76" font-size="18" font-family="Microsoft YaHei, sans-serif">本地先建立边界，模型再计划、分析与自查</text>
+
+  <g font-family="Microsoft YaHei, sans-serif">
+    <text x="70" y="345" fill="#6F8E6B" font-size="14" font-weight="700" letter-spacing="2">LOCAL / 不离开电脑</text>
+    <rect x="70" y="370" width="760" height="135" rx="10" fill="#E4EBDD" stroke="#6F8E6B"/>
+    <circle cx="130" cy="438" r="30" fill="#6F8E6B"/>
+    <text x="130" y="446" text-anchor="middle" fill="#FFFFFF" font-size="18" font-weight="700">00</text>
+    <text x="190" y="424" fill="#182236" font-size="27" font-weight="700">解析与证据索引</text>
+    <text x="190" y="462" fill="#53614F" font-size="17">统一时间格式 · 生成 E00001 · 化名 · 敏感号码遮盖</text>
+
+    <line x1="450" y1="505" x2="450" y2="555" stroke="#9C998F" stroke-width="2"/>
+    <path d="M440 545 L450 558 L460 545" fill="none" stroke="#9C998F" stroke-width="2"/>
+    <line x1="70" y1="545" x2="830" y2="545" stroke="#CFC9BC" stroke-dasharray="7 7"/>
+    <text x="70" y="580" fill="#315FCD" font-size="14" font-weight="700" letter-spacing="2">DOUBAO-SEED-EVOLVING / 脱敏上下文</text>
+
+    <rect x="70" y="610" width="760" height="135" rx="10" fill="#FBFAF5" stroke="#315FCD" stroke-width="2"/>
+    <circle cx="130" cy="678" r="30" fill="#315FCD"/>
+    <text x="130" y="686" text-anchor="middle" fill="#FFFFFF" font-size="18" font-weight="700">01</text>
+    <text x="190" y="664" fill="#182236" font-size="27" font-weight="700">制定分析计划</text>
+    <text x="190" y="702" fill="#555B64" font-size="17">识别本次重点 · 误判风险 · 需要核验的线索</text>
+
+    <line x1="450" y1="745" x2="450" y2="782" stroke="#9C998F" stroke-width="2"/>
+    <path d="M440 772 L450 785 L460 772" fill="none" stroke="#9C998F" stroke-width="2"/>
+
+    <rect x="70" y="795" width="760" height="135" rx="10" fill="#FBFAF5" stroke="#315FCD" stroke-width="2"/>
+    <circle cx="130" cy="863" r="30" fill="#315FCD"/>
+    <text x="130" y="871" text-anchor="middle" fill="#FFFFFF" font-size="18" font-weight="700">02</text>
+    <text x="190" y="849" fill="#182236" font-size="27" font-weight="700">读取全量记录</text>
+    <text x="190" y="887" fill="#555B64" font-size="17">连接跨月事件 · 生成结构化报告 · 绑定证据 ID</text>
+
+    <line x1="450" y1="930" x2="450" y2="967" stroke="#9C998F" stroke-width="2"/>
+    <path d="M440 957 L450 970 L460 957" fill="none" stroke="#9C998F" stroke-width="2"/>
+
+    <rect x="70" y="980" width="760" height="135" rx="10" fill="#182236"/>
+    <circle cx="130" cy="1048" r="30" fill="#E76F51"/>
+    <text x="130" y="1056" text-anchor="middle" fill="#FFFFFF" font-size="18" font-weight="700">03</text>
+    <text x="190" y="1034" fill="#FFFFFF" font-size="27" font-weight="700">回到原文做证据审计</text>
+    <text x="190" y="1072" fill="#C6CAD0" font-size="17">删除无依据结论 · 分离观察与推断 · 输出可点击报告</text>
+  </g>
+  <text x="70" y="1160" fill="#6B6F76" font-size="14" font-family="Microsoft YaHei, sans-serif">Context → Plan → Analysis → Audit → Evidence-grounded Report</text>
+</svg>

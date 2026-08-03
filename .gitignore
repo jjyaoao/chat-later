@@ -1,0 +1,10 @@
+.env
+__pycache__/
+*.py[cod]
+.pytest_cache/
+output/
+图片和附件/
+Seed Evolving 上新！模型内容创作征集ing.md
+Seed Evolving 上新！模型内容创作征集ing.zip
+TESTING.md
+article/*.md

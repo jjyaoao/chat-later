@@ -1,0 +1,41 @@
+{
+  "description": "公开虚构样例中的跨月或跨事件证据链，仅用于验证报告是否连接了远距离消息。",
+  "cases": [
+    {
+      "id": "ride_plan_to_action",
+      "label": "三月提出骑车，四月实际出发",
+      "earlier": ["E00010", "E00014", "E00015"],
+      "later": ["E00016", "E00017", "E00018"]
+    },
+    {
+      "id": "exhibition_feedback_to_change",
+      "label": "五月反馈提醒负担，六月主动购票",
+      "earlier": ["E00019", "E00020", "E00022", "E00023"],
+      "later": ["E00026", "E00027"]
+    },
+    {
+      "id": "interview_setback_to_offer",
+      "label": "七月面试失利与支持，八月收到新 offer",
+      "earlier": ["E00028", "E00029", "E00030", "E00031", "E00032"],
+      "later": ["E00033", "E00034"]
+    },
+    {
+      "id": "quiet_period_to_reconnect",
+      "label": "发现交流变少，随后约定无手机散步",
+      "earlier": ["E00035", "E00036"],
+      "later": ["E00037", "E00038"]
+    },
+    {
+      "id": "album_plan_to_delivery",
+      "label": "提出做相册，三天后交付初稿",
+      "earlier": ["E00039", "E00040"],
+      "later": ["E00041", "E00042"]
+    },
+    {
+      "id": "new_year_plan_to_confirmation",
+      "label": "十一月提出跨年安排，十二月确认并订票",
+      "earlier": ["E00043", "E00044"],
+      "later": ["E00045", "E00046", "E00047", "E00048"]
+    }
+  ]
+}
