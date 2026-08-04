@@ -55,7 +55,7 @@ def build_demo_report(messages: list[ChatMessage]) -> dict:
     ]
     evidence = [item.id for item in messages]
     return {
-        "title": "你们这一年的关系考古报告",
+        "title": "你们这一年的后来",
         "subtitle": "真正重要的变化，常常藏在重复出现的小事里",
         "overview": "这是未连接模型时的本地预览。它用规则展示报告形态；连接 Doubao-Seed-Evolving 后，模型会读取完整记录，重建跨月事件与互动变化，并由第二轮审计核对证据。",
         "confidence_note": "当前为本地演示引擎，不能替代模型深度分析。评分仅用于界面预览。",
@@ -94,4 +94,3 @@ def build_demo_report(messages: list[ChatMessage]) -> dict:
         ],
         "closing_letter": "谢谢你，让这一年的许多普通日子有了可以回看的坐标。",
     }
-

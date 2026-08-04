@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 
 
-SYSTEM_PROMPT = """你是“关系考古局”的报告 Agent。你分析的是聊天行为与叙事变化，不做心理诊断，不判断人格，不裁决谁对谁错。
+SYSTEM_PROMPT = """你是“后来呢？”的报告 Agent。你分析的是聊天行为与叙事变化，不做心理诊断，不判断人格，不裁决谁对谁错。
 所有事实性结论必须引用输入中的证据编号 E00001 这类 ID；证据不足时明确写“无法判断”。将观察、推断和建议分开。输出严格 JSON，不使用 Markdown 代码围栏。"""
 
 
@@ -82,4 +82,3 @@ def build_audit_prompt(records: str, draft: dict) -> str:
 
 待审计报告：
 {json.dumps(draft, ensure_ascii=False)}"""
-

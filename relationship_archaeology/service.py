@@ -136,7 +136,7 @@ def _collect_evidence(report: dict, messages: list[ChatMessage]) -> dict[str, di
 def markdown_export(result: dict[str, Any]) -> str:
     report = result["report"]
     lines = [
-        f"# {report.get('title', '关系考古报告')}",
+        f"# {report.get('title', '你们的后来')}",
         "",
         f"> {report.get('subtitle', '')}",
         "",

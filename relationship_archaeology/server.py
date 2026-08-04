@@ -93,7 +93,7 @@ class Handler(BaseHTTPRequestHandler):
 
 
 def run() -> None:
-    parser = argparse.ArgumentParser(description="Run the Relationship Archaeology demo")
+    parser = argparse.ArgumentParser(description="Run the Chat Later demo")
     parser.add_argument("--host", default="127.0.0.1")
     parser.add_argument("--port", default=8765, type=int)
     parser.add_argument(
@@ -105,7 +105,7 @@ def run() -> None:
     if args.replay:
         os.environ["ENABLE_REPLAY"] = "1"
     server = ThreadingHTTPServer((args.host, args.port), Handler)
-    print(f"Relationship Archaeology is running at http://{args.host}:{args.port}")
+    print(f"Chat Later is running at http://{args.host}:{args.port}")
     try:
         server.serve_forever()
     except KeyboardInterrupt:

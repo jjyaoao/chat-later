@@ -105,7 +105,7 @@ function animateProgress() {
 
 function renderReport(data) {
   const r = data.report;
-  $("#reportTitle").textContent = r.title || "关系考古报告";
+  $("#reportTitle").textContent = r.title || "你们的后来";
   $("#reportSubtitle").textContent = r.subtitle || "";
   $("#overview").textContent = r.overview || "";
   $("#engineBadge").textContent = data.engine === "local-demo" ? "LOCAL PREVIEW · 未调用模型" : `${data.engine} · ${data.stages.join(" → ")}`;
