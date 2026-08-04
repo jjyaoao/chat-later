@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <title>后来呢？小红书配图</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; background: #d8d5cd; font-family: "Microsoft YaHei", "PingFang SC", sans-serif; color: #181915; }
+    body { display: grid; gap: 48px; padding: 48px; justify-content: center; }
+    .poster { position: relative; width: 1080px; height: 1440px; overflow: hidden; padding: 72px; background: #f5f1e8; border: 1px solid #c8c2b6; }
+    .poster::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .2; background-image: radial-gradient(#514f49 0.6px, transparent 0.6px); background-size: 7px 7px; }
+    .topline, .footer { position: relative; z-index: 2; display: flex; justify-content: space-between; align-items: center; font-size: 22px; font-weight: 700; }
+    .brand { display: flex; gap: 14px; align-items: center; }
+    .brand i { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: #191a16; color: white; font-style: normal; }
+    .model { padding: 10px 16px; border: 1px solid currentColor; border-radius: 99px; font-family: Georgia, serif; font-size: 15px; letter-spacing: .5px; }
+    .eyebrow { position: relative; z-index: 2; margin-top: 100px; font: 700 17px/1 Georgia, serif; letter-spacing: 3px; color: #65645e; }
+    h1 { position: relative; z-index: 2; margin: 28px 0 24px; font: 500 88px/1.08 Georgia, "Songti SC", serif; letter-spacing: -4px; }
+    h2 { position: relative; z-index: 2; margin: 24px 0 18px; font: 500 66px/1.14 Georgia, "Songti SC", serif; letter-spacing: -2px; }
+    .lead { position: relative; z-index: 2; margin: 0; max-width: 850px; font-size: 27px; line-height: 1.7; color: #4a4a44; }
+    .accent { color: #f06449; font-style: italic; }
+    .footer { position: absolute; left: 72px; right: 72px; bottom: 58px; color: #5d5a53; font-size: 17px; }
+    .page-no { font-family: Georgia, serif; letter-spacing: 2px; }
+    .tags { position: relative; z-index: 2; display: flex; gap: 12px; flex-wrap: wrap; margin-top: 30px; }
+    .tags span { padding: 10px 16px; border: 1px solid #aaa69d; border-radius: 4px; font-size: 19px; background: rgba(255,255,255,.35); }
+    .cover { background: #f7f3ea; }
+    .cover h1 { font-size: 101px; margin-top: 36px; }
+    .cover .paper { position: relative; z-index: 2; margin-top: 78px; padding: 42px; background: white; border: 2px solid #1c1c19; box-shadow: 16px 16px 0 #1c1c19; }
+    .paper-head { display: flex; justify-content: space-between; color: #77736a; font: 700 16px Georgia, serif; letter-spacing: 2px; }
+    .message { width: 68%; margin-top: 26px; padding: 20px 24px; border-radius: 18px 18px 18px 4px; background: #f1ede4; font-size: 24px; line-height: 1.5; }
+    .message.right { margin-left: auto; border-radius: 18px 18px 4px 18px; background: #f06449; color: white; }
+    .paper-result { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 34px; }
+    .paper-result div { padding: 20px; background: #efede6; }
+    .paper-result b { display: block; font: 700 31px Georgia, serif; }
+    .paper-result span { display: block; margin-top: 7px; color: #65645e; font-size: 17px; }
+    .timeline { position: relative; z-index: 2; margin-top: 76px; }
+    .timeline-row { display: grid; grid-template-columns: 1fr 65px 1fr 65px 1fr; align-items: center; }
+    .event { height: 370px; padding: 32px; color: white; display: flex; flex-direction: column; justify-content: space-between; }
+    .event small { font: 700 15px Georgia, serif; letter-spacing: 2px; }
+    .event q { font: 500 29px/1.45 Georgia, "Songti SC", serif; }
+    .event b { font: 700 15px Georgia, serif; }
+    .coral { background: #d96e53; }
+    .blue { background: #4e62d1; }
+    .green { background: #8ca080; }
+    .arrow { text-align: center; font-size: 38px; }
+    .arrow small { display: block; margin-top: 8px; font-size: 15px; color: #77736a; }
+    .timeline-result { margin-top: 30px; padding: 27px; background: #e7e3da; display: flex; justify-content: space-between; font-size: 21px; }
+    .visual-frame { position: relative; z-index: 2; margin-top: 48px; background: white; border: 2px solid #1c1c19; box-shadow: 14px 14px 0 #1c1c19; overflow: hidden; }
+    .visual-frame img { width: 100%; display: block; }
+    .insight-strip { position: relative; z-index: 2; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 46px; }
+    .insight-strip div { min-height: 155px; padding: 24px; background: #1b1c18; color: white; }
+    .insight-strip div:nth-child(2) { background: #4d63d3; }
+    .insight-strip div:nth-child(3) { background: #d96e53; }
+    .insight-strip b { display: block; font: 700 38px Georgia, serif; }
+    .insight-strip span { display: block; margin-top: 26px; font-size: 18px; opacity: .85; }
+    .heat-poster { background: #181a17; color: #f7f3ea; }
+    .heat-poster::after { opacity: .08; }
+    .heat-poster .brand i { background: #f06449; }
+    .heat-poster .eyebrow, .heat-poster .lead, .heat-poster .footer { color: #bbb9b1; }
+    .heat-poster .visual-frame { background: #f7f3ea; box-shadow: 14px 14px 0 #f06449; }
+    .heat-facts { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 54px; }
+    .heat-facts div { padding: 28px; border: 1px solid #555650; }
+    .heat-facts b { display: block; color: #f06449; font: 700 41px Georgia, serif; }
+    .heat-facts span { display: block; margin-top: 10px; font-size: 19px; color: #cbc9c2; }
+    .entry-grid { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 56px; }
+    .entry-card { min-height: 440px; padding: 34px; background: white; border: 2px solid #22231f; box-shadow: 10px 10px 0 #22231f; }
+    .entry-card b { display: block; margin-bottom: 22px; font: 500 31px Georgia, "Songti SC", serif; }
+    .entry-card p { margin: 0 0 22px; font-size: 20px; line-height: 1.6; color: #5f5d57; }
+    .drop { height: 160px; display: grid; place-items: center; border: 1px dashed #8b877e; text-align: center; font-weight: 700; line-height: 1.6; }
+    .key { margin-top: 15px; display: flex; border: 2px solid #22231f; }
+    .key span { flex: 1; padding: 17px; color: #8b877e; font-family: monospace; }
+    .key i { padding: 17px; background: #22231f; color: white; font-style: normal; }
+    .fixed { margin-top: 14px; padding: 12px; background: #eef3e9; font: 14px monospace; color: #53704e; }
+    .privacy { position: relative; z-index: 2; margin-top: 42px; padding: 30px; border-left: 8px solid #7f9d7b; background: #e8eee4; font-size: 21px; line-height: 1.6; }
+  </style>
+</head>
+<body>
+  <section class="poster cover" id="poster-1">
+    <div class="topline"><div class="brand"><i>后</i><span>后来呢？</span></div><span class="model">Doubao-Seed-Evolving</span></div>
+    <div class="eyebrow">WHAT HAPPENED NEXT? / 2025</div>
+    <h1>把一整年的聊天，<br><span class="accent">还原成故事发生过的样子。</span></h1>
+    <p class="lead">不是只看“聊了多少”，而是找回一句约定、一次反馈和它们隔了几个月才出现的后来。</p>
+    <div class="paper">
+      <div class="paper-head"><span>A CLUE ACROSS TIME</span><span>27 DAYS</span></div>
+      <div class="message">周末要不要去江边骑车？</div>
+      <div class="message right">必须，四月第一个周六。</div>
+      <div class="message">我到地铁口了，今天风有点大。</div>
+      <div class="paper-result"><div><b>50</b><span>条虚构样例消息</span></div><div><b>19</b><span>个活跃日</span></div><div><b>1</b><span>条完整故事线</span></div></div>
+    </div>
+    <div class="footer"><span>聊天故事年鉴 · 所有示例均为虚构</span><span class="page-no">01 / 05</span></div>
+  </section>
+
+  <section class="poster" id="poster-2">
+    <div class="topline"><div class="brand"><i>后</i><span>后来呢？</span></div><span class="model">跨月线索</span></div>
+    <div class="eyebrow">A CLUE ACROSS TIME</div>
+    <h2>一句“等忙完去骑车”，<br><span class="accent">27 天后真的发生了吗？</span></h2>
+    <p class="lead">关键词只能找到“骑车”。真正想知道的是：谁先提出、有没有重排、最后是否落地。</p>
+    <div class="timeline">
+      <div class="timeline-row">
+        <div class="event coral"><small>03 / 09 · 发起</small><q>周末要不要去江边骑车？</q><b>E00010</b></div>
+        <div class="arrow">→<small>19 天</small></div>
+        <div class="event blue"><small>03 / 28 · 重排</small><q>必须，四月第一个周六。</q><b>E00015</b></div>
+        <div class="arrow">→<small>8 天</small></div>
+        <div class="event green"><small>04 / 05 · 落地</small><q>我到地铁口了，今天风有点大。</q><b>E00016</b></div>
+      </div>
+      <div class="timeline-result"><strong>27 天 · 3 个节点 · 1 条完整故事线</strong><span>每个结论都能点回原消息</span></div>
+    </div>
+    <div class="tags"><span>跨月约定</span><span>重要变化</span><span>没说完的下次</span><span>证据可追溯</span></div>
+    <div class="footer"><span>从一句话找到它真正的后来</span><span class="page-no">02 / 05</span></div>
+  </section>
+
+  <section class="poster" id="poster-3">
+    <div class="topline"><div class="brand"><i>后</i><span>后来呢？</span></div><span class="model">视觉年鉴</span></div>
+    <div class="eyebrow">YOUR CHAT IN NUMBERS</div>
+    <h2>这一年聊了什么？<br><span class="accent">聊天里还藏着哪些数字？</span></h2>
+    <p class="lead">词云负责第一眼的记忆，趣味数字把聊天习惯变成可以分享的年终总结。</p>
+    <div class="visual-frame"><img src="assets/10-词云与趣味数据.png" alt="聊天词云与趣味数据" /></div>
+    <div class="insight-strip"><div><b>01 / 03</b><span>最热闹的一天</span></div><div><b>18:00</b><span>最常出现的时刻</span></div><div><b>3 分钟</b><span>中位回应间隔</span></div></div>
+    <div class="footer"><span>词云 · 连续聊天天数 · 回应速度</span><span class="page-no">03 / 05</span></div>
+  </section>
+
+  <section class="poster heat-poster" id="poster-4">
+    <div class="topline"><div class="brand"><i>后</i><span>后来呢？</span></div><span class="model">年度热力图</span></div>
+    <div class="eyebrow">365 DAYS OF CONVERSATION</div>
+    <h2>哪一天，<br><span class="accent">最想和对方说话？</span></h2>
+    <p class="lead">把全年聊天铺成一张热力图。颜色越深，代表那天留下的消息越多。</p>
+    <div class="visual-frame"><img src="assets/11-年度活跃热力图.png" alt="年度聊天热力图" /></div>
+    <div class="heat-facts"><div><b>19 个</b><span>全年活跃聊天日</span></div><div><b>2 天</b><span>最长连续有话说</span></div><div><b>01 / 03</b><span>样例里最热闹的一天</span></div><div><b>可回看</b><span>每个事实结论绑定证据编号</span></div></div>
+    <div class="footer"><span>一年很长，也可以被重新看见</span><span class="page-no">04 / 05</span></div>
+  </section>
+
+  <section class="poster" id="poster-5">
+    <div class="topline"><div class="brand"><i>后</i><span>后来呢？</span></div><span class="model">OPEN SOURCE</span></div>
+    <div class="eyebrow">YOUR CHAT · YOUR KEY</div>
+    <h2>上传你的聊天记录，<br><span class="accent">生成自己的聊天年鉴。</span></h2>
+    <p class="lead">项目开放上传和模型入口：可以粘贴聊天、导入文件，也可以填写自己的 Ark API Key。</p>
+    <div class="entry-grid">
+      <div class="entry-card"><b>01 / 放入记录</b><p>支持 TXT、MD、CSV，或直接粘贴文本。</p><div class="drop">↑<br>拖入聊天记录<br><small>当前上限 8MB</small></div></div>
+      <div class="entry-card"><b>02 / 使用自己的 Key</b><p>Key 仅进入当前请求，不写入浏览器存储、缓存或报告。</p><div class="key"><span>ARK_API_KEY</span><i>显示</i></div><div class="fixed">固定调用 · doubao-seed-evolving</div></div>
+    </div>
+    <div class="privacy"><strong>先在本地做预处理</strong><br>姓名化名，手机号、邮箱、身份证和长号码会被遮盖；请只处理自己有权使用的聊天记录。</div>
+    <div class="tags"><span>本地脱敏</span><span>BYOK</span><span>证据回看</span><span>开源项目</span></div>
+    <div class="footer"><span>github.com/jjyaoao/chat-later</span><span class="page-no">05 / 05</span></div>
+  </section>
+</body>
+</html>
