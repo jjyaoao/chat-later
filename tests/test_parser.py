@@ -60,6 +60,20 @@ class ParserTests(unittest.TestCase):
         self.assertEqual(stats["message_count"], 2)
         self.assertEqual(stats["late_night_count"], 1)
         self.assertEqual(stats["monthly_counts"], {"2025-01": 1, "2025-02": 1})
+        self.assertEqual(stats["active_days"], 2)
+        self.assertEqual(stats["daily_counts"]["2025-01-01"], 1)
+
+    def test_fun_stats_and_word_cloud(self):
+        messages = parse_chat(
+            "[2025-01-01 10:00] A: 周末去骑车吧\n"
+            "[2025-01-01 10:02] B: 好啊周末骑车\n"
+            "[2025-01-02 23:10] A: 骑车路线发你了\n"
+            "[2025-01-03 08:00] B: 骑车出发"
+        )
+        stats = compute_stats(messages)
+        self.assertEqual(stats["longest_streak_days"], 3)
+        self.assertEqual(stats["busiest_day"], "2025-01-01")
+        self.assertIn("骑车", {item["text"] for item in stats["word_cloud"]})
 
 
 if __name__ == "__main__":

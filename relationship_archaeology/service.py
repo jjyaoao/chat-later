@@ -12,8 +12,26 @@ from .prompts import (
     build_audit_prompt,
     build_plan_prompt,
 )
-from .seed_client import SeedClient
+from .seed_client import DEFAULT_ARK_BASE_URL, DEFAULT_ARK_MODEL, SeedClient
 from .stats import compute_stats
+
+
+def _client_for_request(payload: dict[str, Any]) -> tuple[SeedClient, str]:
+    ephemeral_key = str(payload.get("ark_api_key", "")).strip()
+    if ephemeral_key:
+        if len(ephemeral_key) > 512 or not ephemeral_key.isascii() or any(char.isspace() for char in ephemeral_key):
+            raise ValueError("API Key 格式无效，请粘贴火山方舟控制台生成的完整 Key。")
+        return (
+            SeedClient(
+                api_key=ephemeral_key,
+                base_url=DEFAULT_ARK_BASE_URL,
+                model=DEFAULT_ARK_MODEL,
+                allow_cache=False,
+            ),
+            "user-key",
+        )
+    client = SeedClient()
+    return client, "server-key" if client.configured else "local-preview"
 
 
 def analyse(payload: dict[str, Any]) -> dict[str, Any]:
@@ -29,7 +47,7 @@ def analyse(payload: dict[str, Any]) -> dict[str, Any]:
         messages, aliases=aliases_enabled
     )
     stats = compute_stats(safe_messages)
-    client = SeedClient()
+    client, access_mode = _client_for_request(payload)
     deep = payload.get("mode", "deep") == "deep"
 
     if not client.configured:
@@ -82,6 +100,7 @@ def analyse(payload: dict[str, Any]) -> dict[str, Any]:
     evidence = _collect_evidence(report, safe_messages)
     return {
         "engine": engine,
+        "access_mode": access_mode,
         "stages": stages,
         "stats": stats,
         "privacy": {

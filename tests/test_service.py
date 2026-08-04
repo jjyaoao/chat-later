@@ -10,7 +10,7 @@ from relationship_archaeology.seed_client import (
     _extract_responses_text,
     _friendly_http_error,
 )
-from relationship_archaeology.service import analyse, preview
+from relationship_archaeology.service import _client_for_request, analyse, preview
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -104,6 +104,18 @@ class ServiceTests(unittest.TestCase):
             "doubao-seed-evolving",
         )
         self.assertIn("安全体验模式", message)
+
+    def test_ephemeral_user_key_is_fixed_to_official_model_endpoint(self):
+        client, mode = _client_for_request({"ark_api_key": "demo-key-123"})
+        self.assertEqual(mode, "user-key")
+        self.assertEqual(client.api_key, "demo-key-123")
+        self.assertEqual(client.base_url, "https://ark.cn-beijing.volces.com/api/v3")
+        self.assertEqual(client.model, "doubao-seed-evolving")
+        self.assertIsNone(client.cache_dir)
+
+    def test_ephemeral_user_key_rejects_whitespace(self):
+        with self.assertRaisesRegex(ValueError, "API Key 格式无效"):
+            _client_for_request({"ark_api_key": "bad key"})
 
 
 if __name__ == "__main__":

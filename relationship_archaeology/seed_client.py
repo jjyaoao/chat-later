@@ -15,19 +15,32 @@ class SeedClientError(RuntimeError):
     pass
 
 
+DEFAULT_ARK_BASE_URL = "https://ark.cn-beijing.volces.com/api/v3"
+DEFAULT_ARK_MODEL = "doubao-seed-evolving"
+
+
 class SeedClient:
-    def __init__(self) -> None:
-        self.api_key = os.getenv("ARK_API_KEY", "").strip()
-        self.base_url = os.getenv(
-            "ARK_BASE_URL", "https://ark.cn-beijing.volces.com/api/v3"
+    def __init__(
+        self,
+        *,
+        api_key: str | None = None,
+        base_url: str | None = None,
+        model: str | None = None,
+        allow_cache: bool = True,
+    ) -> None:
+        self.api_key = (api_key if api_key is not None else os.getenv("ARK_API_KEY", "")).strip()
+        self.base_url = (
+            base_url
+            if base_url is not None
+            else os.getenv("ARK_BASE_URL", DEFAULT_ARK_BASE_URL)
         ).rstrip("/")
-        self.model = os.getenv("ARK_MODEL", "doubao-seed-evolving")
+        self.model = model if model is not None else os.getenv("ARK_MODEL", DEFAULT_ARK_MODEL)
         self.api_style = os.getenv("ARK_API_STYLE", "responses").strip().lower()
         configured_timeout = int(os.getenv("ARK_TIMEOUT_SECONDS", "600"))
         self.timeout_seconds = min(1800, max(30, configured_timeout))
         self.max_retries = min(5, max(0, int(os.getenv("ARK_MAX_RETRIES", "3"))))
         self.force_json_tool = os.getenv("ARK_FORCE_JSON_TOOL", "0") == "1"
-        cache_dir = os.getenv("ARK_RESPONSE_CACHE_DIR", "").strip()
+        cache_dir = os.getenv("ARK_RESPONSE_CACHE_DIR", "").strip() if allow_cache else ""
         self.cache_dir = Path(cache_dir) if cache_dir else None
         self.calls: list[dict[str, Any]] = []
 

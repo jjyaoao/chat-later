@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="把聊天里没说完的故事找回来" />
     <title>后来呢？· 聊天故事年鉴</title>
+    <link rel="icon" href="data:," />
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
@@ -67,7 +68,7 @@
             <input id="fileInput" type="file" accept=".txt,.md,.csv" />
             <span class="drop-icon">↥</span>
             <strong>拖入 TXT / MD / CSV</strong>
-            <small>或点击选择文件 · 当前演示上限 30MB</small>
+            <small>或点击选择文件 · 当前上限 8MB</small>
           </label>
           <div class="or"><span>或粘贴文本</span></div>
           <textarea id="chatInput" spellcheck="false" placeholder="[2025-01-03 23:27] 林舟: 辛苦啦，先喝水，想吐槽我就听着"></textarea>
@@ -87,10 +88,27 @@
             <span><strong>深度证据审计</strong><small>生成后再读原文，检查每条结论</small></span>
             <input id="deepToggle" type="checkbox" checked /><i></i>
           </label>
+          <section class="api-key-panel" aria-labelledby="apiKeyTitle">
+            <div class="api-key-heading">
+              <div><span class="card-index">03 / 模型入口</span><strong id="apiKeyTitle">使用你自己的 Ark API Key</strong></div>
+              <span class="byok-badge">BYOK</span>
+            </div>
+            <div class="api-key-field">
+              <input id="apiKeyInput" type="password" autocomplete="off" spellcheck="false" placeholder="粘贴 ARK_API_KEY" aria-describedby="apiKeyHelp" />
+              <button id="toggleApiKey" type="button" aria-label="显示 API Key">显示</button>
+            </div>
+            <div class="api-endpoint"><span>固定调用</span><code>ark.cn-beijing.volces.com · doubao-seed-evolving</code></div>
+            <div id="apiModeStatus" class="api-mode-status">正在检查站点模型配置…</div>
+            <p id="apiKeyHelp">Key 只用于本次请求，不写入浏览器存储、日志或报告。留空时使用站点配置；站点未配置则生成本地预览。</p>
+          </section>
           <div class="privacy-note">
             <span>⌁</span>
             <p><strong>先在本地做预处理</strong>手机号、邮箱、身份证和长号码会被遮盖。选择分析后，脱敏文本才会发送至模型 API。</p>
           </div>
+          <label class="consent-row">
+            <input id="consentToggle" type="checkbox" />
+            <span>我确认有权处理这些记录，或正在使用虚构样例。</span>
+          </label>
           <button id="analyzeButton" class="primary-button" disabled>
             <span>开始寻找后来</span><b>↗</b>
           </button>
@@ -114,25 +132,42 @@
           <div id="statsCards" class="stats-cards"></div>
         </div>
 
+        <div class="insights-grid">
+          <article class="report-card word-cloud-card">
+            <div class="card-heading"><div><span class="card-index">01 / 高频词</span><h3>这一年聊了什么</h3></div><span class="visual-hint">词越大，出现越频繁</span></div>
+            <div id="wordCloud" class="word-cloud"></div>
+          </article>
+          <article class="report-card fun-facts-card">
+            <div class="card-heading"><div><span class="card-index">02 / 彩蛋</span><h3>聊天里的隐藏数字</h3></div></div>
+            <div id="funFacts" class="fun-facts"></div>
+          </article>
+        </div>
+
+        <article class="report-card heatmap-card">
+          <div class="card-heading"><div><span class="card-index">03 / 活跃度</span><h3>哪一天最想和对方说话</h3></div><div class="heat-legend"><span>少</span><i></i><i></i><i></i><i></i><span>多</span></div></div>
+          <div id="activityHeatmap" class="activity-heatmap"></div>
+          <p id="heatmapCaption" class="heatmap-caption"></p>
+        </article>
+
         <article class="report-card pulse-card">
-          <div class="card-heading"><div><span class="card-index">01 / 时间</span><h3>关系脉搏</h3></div><div class="legend"><span class="warm">关系温度</span><span class="friction">摩擦信号</span></div></div>
+          <div class="card-heading"><div><span class="card-index">04 / 时间</span><h3>关系脉搏</h3></div><div class="legend"><span class="warm">关系温度</span><span class="friction">摩擦信号</span></div></div>
           <div id="pulseChart" class="pulse-chart"></div>
           <div id="monthNotes" class="month-notes"></div>
         </article>
 
         <div class="two-column">
-          <article class="report-card"><div class="card-heading"><div><span class="card-index">02 / 内容</span><h3>共同话题迁徙</h3></div></div><div id="topics" class="topics"></div></article>
-          <article class="report-card"><div class="card-heading"><div><span class="card-index">03 / 线索</span><h3>还没说完的约定</h3></div></div><div id="openLoops" class="open-loops"></div></article>
+          <article class="report-card"><div class="card-heading"><div><span class="card-index">05 / 内容</span><h3>共同话题迁徙</h3></div></div><div id="topics" class="topics"></div></article>
+          <article class="report-card"><div class="card-heading"><div><span class="card-index">06 / 线索</span><h3>还没说完的约定</h3></div></div><div id="openLoops" class="open-loops"></div></article>
         </div>
 
         <article class="report-card">
-          <div class="card-heading"><div><span class="card-index">04 / 事件</span><h3>这一年的转折点</h3></div></div>
+          <div class="card-heading"><div><span class="card-index">07 / 事件</span><h3>这一年的转折点</h3></div></div>
           <div id="turningPoints" class="timeline"></div>
         </article>
 
         <div class="two-column">
-          <article class="report-card"><div class="card-heading"><div><span class="card-index">05 / 回应</span><h3>互相托举的时刻</h3></div></div><div id="supportMoments" class="story-list"></div></article>
-          <article class="report-card"><div class="card-heading"><div><span class="card-index">06 / 模式</span><h3>重复出现的互动</h3></div></div><div id="patterns" class="story-list"></div></article>
+          <article class="report-card"><div class="card-heading"><div><span class="card-index">08 / 回应</span><h3>互相托举的时刻</h3></div></div><div id="supportMoments" class="story-list"></div></article>
+          <article class="report-card"><div class="card-heading"><div><span class="card-index">09 / 模式</span><h3>重复出现的互动</h3></div></div><div id="patterns" class="story-list"></div></article>
         </div>
 
         <article class="letter-card"><span>写在年末</span><blockquote id="closingLetter"></blockquote></article>

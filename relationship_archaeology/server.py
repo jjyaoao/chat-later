@@ -8,6 +8,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import urlparse
 
+from .seed_client import DEFAULT_ARK_BASE_URL, DEFAULT_ARK_MODEL, SeedClientError
 from .service import analyse, markdown_export, preview
 
 
@@ -15,10 +16,11 @@ ROOT = Path(__file__).resolve().parent.parent
 STATIC = ROOT / "static"
 SAMPLE = ROOT / "sample_data" / "demo_chat.txt"
 REPLAY = ROOT / "output" / "live_smoke.json"
+MAX_BODY_BYTES = min(30, max(1, int(os.getenv("MAX_UPLOAD_MB", "8")))) * 1024 * 1024
 
 
 class Handler(BaseHTTPRequestHandler):
-    server_version = "RelationshipArchaeology/0.1"
+    server_version = "ChatLater/0.2"
 
     def do_GET(self) -> None:  # noqa: N802
         path = urlparse(self.path).path
@@ -27,6 +29,17 @@ class Handler(BaseHTTPRequestHandler):
             return
         if path == "/api/health":
             self._json({"ok": True})
+            return
+        if path == "/api/config":
+            self._json(
+                {
+                    "server_key_configured": bool(os.getenv("ARK_API_KEY", "").strip()),
+                    "byok_enabled": True,
+                    "endpoint": DEFAULT_ARK_BASE_URL,
+                    "model": DEFAULT_ARK_MODEL,
+                    "max_upload_mb": MAX_BODY_BYTES // 1024 // 1024,
+                }
+            )
             return
         if path == "/api/replay" and os.getenv("ENABLE_REPLAY", "") == "1":
             if not REPLAY.is_file():
@@ -47,6 +60,7 @@ class Handler(BaseHTTPRequestHandler):
         self.send_response(200)
         self.send_header("Content-Type", f"{content_type}; charset=utf-8")
         self.send_header("Content-Length", str(len(body)))
+        self._security_headers()
         self.end_headers()
         self.wfile.write(body)
 
@@ -54,8 +68,8 @@ class Handler(BaseHTTPRequestHandler):
         path = urlparse(self.path).path
         try:
             length = int(self.headers.get("Content-Length", "0"))
-            if length > 30 * 1024 * 1024:
-                raise ValueError("上传内容超过 30MB 演示限制。")
+            if length > MAX_BODY_BYTES:
+                raise ValueError(f"上传内容超过 {MAX_BODY_BYTES // 1024 // 1024}MB 限制。")
             payload = json.loads(self.rfile.read(length).decode("utf-8"))
             if path == "/api/preview":
                 self._json(preview(payload))
@@ -68,6 +82,8 @@ class Handler(BaseHTTPRequestHandler):
                 self.send_error(404)
         except (ValueError, json.JSONDecodeError) as exc:
             self._json({"error": str(exc)}, status=400)
+        except SeedClientError as exc:
+            self._json({"error": str(exc)}, status=502)
         except Exception as exc:  # keep the local demo inspectable
             self._json({"error": str(exc)}, status=500)
 
@@ -79,6 +95,8 @@ class Handler(BaseHTTPRequestHandler):
         self.send_response(status)
         self.send_header("Content-Type", "application/json; charset=utf-8")
         self.send_header("Content-Length", str(len(body)))
+        self.send_header("Cache-Control", "no-store")
+        self._security_headers()
         self.end_headers()
         self.wfile.write(body)
 
@@ -86,16 +104,28 @@ class Handler(BaseHTTPRequestHandler):
         data = body.encode("utf-8")
         self.send_response(200)
         self.send_header("Content-Type", content_type)
-        self.send_header("Content-Disposition", 'attachment; filename="relationship-yearbook.md"')
+        self.send_header("Content-Disposition", 'attachment; filename="chat-later-yearbook.md"')
         self.send_header("Content-Length", str(len(data)))
+        self.send_header("Cache-Control", "no-store")
+        self._security_headers()
         self.end_headers()
         self.wfile.write(data)
+
+    def _security_headers(self) -> None:
+        self.send_header("X-Content-Type-Options", "nosniff")
+        self.send_header("Referrer-Policy", "no-referrer")
+        self.send_header("Permissions-Policy", "camera=(), microphone=(), geolocation=()")
+        self.send_header(
+            "Content-Security-Policy",
+            "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; "
+            "img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'",
+        )
 
 
 def run() -> None:
     parser = argparse.ArgumentParser(description="Run the Chat Later demo")
-    parser.add_argument("--host", default="127.0.0.1")
-    parser.add_argument("--port", default=8765, type=int)
+    parser.add_argument("--host", default=os.getenv("HOST", "127.0.0.1"))
+    parser.add_argument("--port", default=int(os.getenv("PORT", "8765")), type=int)
     parser.add_argument(
         "--replay",
         action="store_true",
