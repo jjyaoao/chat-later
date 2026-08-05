@@ -19,6 +19,15 @@
 
 ![年度聊天活跃热力图](article/assets/11-年度活跃热力图.png)
 
+## 发布素材与实测记录
+
+- [小红书发布文案](article/发布短文案.md)
+- [Doubao-Seed-Evolving 卖点备忘](article/Doubao-Seed-Evolving卖点备忘.md)
+- [实测数据与发布口径](article/实测数据与发布口径.md)
+- [五张 3:4 海报的可编辑源文件](article/小红书配图.html)
+
+公开虚构样例的深度模式实测共调用模型 3 次，消耗 54,165 Tokens，累计 API 延迟约 11 分 53 秒。6 条预埋跨月证据链召回 6/6，报告没有引用无效证据 ID；详细方法、阶段遥测和结论边界见 [TESTING.md](TESTING.md)。
+
 ![真实报告总览](article/assets/04-真实报告总览.png)
 
 点击报告中的证据编号，可以回到化名后的原文：
