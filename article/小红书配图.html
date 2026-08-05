@@ -71,14 +71,59 @@
     .key i { padding: 17px; background: #22231f; color: white; font-style: normal; }
     .fixed { margin-top: 14px; padding: 12px; background: #eef3e9; font: 14px monospace; color: #53704e; }
     .privacy { position: relative; z-index: 2; margin-top: 42px; padding: 30px; border-left: 8px solid #7f9d7b; background: #e8eee4; font-size: 21px; line-height: 1.6; }
+    /* V2：高冲击小红书视觉。保留真实界面与文字，只重做注意力层级。 */
+    #poster-1 { background: #ffe817; }
+    #poster-1::before { content: ""; position: absolute; width: 880px; height: 880px; right: -430px; top: 120px; border-radius: 50%; background: repeating-conic-gradient(#ff593d 0 7deg, transparent 7deg 15deg); opacity: .92; }
+    #poster-1 h1, #poster-2 h2, #poster-3 h2, #poster-5 h2 { font-family: "Arial Black", "Microsoft YaHei", sans-serif; font-weight: 950; font-style: normal; }
+    #poster-1 h1 { margin-top: 30px; font-size: 105px; line-height: 1.02; text-shadow: 8px 8px 0 #fff; }
+    #poster-1 .accent { color: #ff4d2e; -webkit-text-stroke: 3px #161713; text-shadow: 7px 7px 0 #fff; }
+    #poster-1 .lead { max-width: 720px; padding: 16px 20px; background: #161713; color: white; font-weight: 800; transform: rotate(-1deg); }
+    #poster-1 .paper { margin-top: 58px; border-width: 6px; box-shadow: 24px 24px 0 #3155ff; transform: rotate(-1.5deg); }
+    #poster-1 .burst { position: absolute; z-index: 4; right: 46px; top: 596px; width: 190px; height: 190px; display: grid; place-items: center; padding: 25px; border-radius: 50%; background: #3155ff; color: white; border: 5px solid #171813; box-shadow: 8px 8px 0 white; text-align: center; font-size: 25px; line-height: 1.25; font-weight: 900; transform: rotate(10deg); }
+    #poster-2 { background: #ff6547; }
+    #poster-2 h2 { margin-top: 22px; font-size: 74px; line-height: 1.08; color: #161713; text-shadow: 5px 5px 0 #fff; }
+    #poster-2 .accent { color: #ffe817; -webkit-text-stroke: 2px #161713; text-shadow: 5px 5px 0 #fff; }
+    #poster-2 .lead { color: #1a1b17; font-weight: 800; }
+    #poster-2 .event { border: 5px solid #161713; box-shadow: 11px 11px 0 #161713; }
+    #poster-2 .event:nth-child(1) { transform: rotate(-2deg); }
+    #poster-2 .event:nth-child(3) { transform: rotate(1.5deg); }
+    #poster-2 .event:nth-child(5) { transform: rotate(-1deg); }
+    #poster-2 .timeline-result { border: 3px solid #161713; background: #ffe817; box-shadow: 8px 8px 0 #3155ff; }
+    #poster-2 .tags span { border: 3px solid #161713; background: white; font-weight: 800; box-shadow: 4px 4px 0 #161713; }
+    #poster-3 { background: #5368ff; color: white; }
+    #poster-3::before { content: "18:00"; position: absolute; right: -35px; top: 110px; color: rgba(255,232,23,.16); font: 950 230px/1 "Arial Black", sans-serif; transform: rotate(-8deg); }
+    #poster-3 h2 { font-size: 78px; text-shadow: 6px 6px 0 #171813; }
+    #poster-3 .accent { color: #ffe817; -webkit-text-stroke: 2px #171813; text-shadow: 6px 6px 0 #171813; }
+    #poster-3 .lead { color: white; font-weight: 800; }
+    #poster-3 .visual-frame { border-width: 6px; box-shadow: 18px 18px 0 #ffe817; transform: rotate(-1deg); }
+    #poster-3 .insight-strip div { border: 4px solid #171813; box-shadow: 8px 8px 0 #171813; color: #171813; background: #ffe817; }
+    #poster-3 .insight-strip div:nth-child(2) { background: #b9ff35; }
+    #poster-3 .insight-strip div:nth-child(3) { background: #ff6547; }
+    #poster-3 .footer { color: white; }
+    #poster-4 { background: radial-gradient(circle at 85% 18%, #3b210e 0, #171916 32%, #10110f 70%); }
+    #poster-4::before { content: "365"; position: absolute; right: -20px; top: 90px; color: rgba(255,101,71,.12); font: 950 310px/1 "Arial Black", sans-serif; transform: rotate(-9deg); }
+    #poster-4 h2 { font-family: "Arial Black", "Microsoft YaHei", sans-serif; font-weight: 950; font-size: 82px; }
+    #poster-4 .accent { color: #ff6547; text-shadow: 5px 5px 0 #000; }
+    #poster-4 .visual-frame { border-width: 6px; transform: rotate(1deg); }
+    #poster-4 .heat-facts div { border: 3px solid #ff6547; box-shadow: 8px 8px 0 #ff6547; }
+    #poster-5 { background: #b9ff35; }
+    #poster-5::before { content: "UPLOAD YOUR CHAT"; position: absolute; right: -110px; top: 280px; padding: 18px 120px; background: #ff6547; color: #171813; font: 950 30px/1 "Arial Black", sans-serif; transform: rotate(18deg); border: 4px solid #171813; }
+    #poster-5 h2 { font-size: 78px; line-height: 1.06; text-shadow: 6px 6px 0 white; }
+    #poster-5 .accent { color: #3155ff; -webkit-text-stroke: 2px #171813; text-shadow: 6px 6px 0 white; }
+    #poster-5 .lead { color: #171813; font-weight: 800; }
+    #poster-5 .entry-card { border-width: 5px; box-shadow: 14px 14px 0 #3155ff; }
+    #poster-5 .entry-card:nth-child(2) { transform: rotate(1deg); box-shadow: 14px 14px 0 #ff6547; }
+    #poster-5 .privacy { border: 4px solid #171813; background: #ffe817; box-shadow: 8px 8px 0 #171813; }
+    #poster-5 .tags span { border: 3px solid #171813; background: white; font-weight: 800; box-shadow: 4px 4px 0 #171813; }
   </style>
 </head>
 <body>
   <section class="poster cover" id="poster-1">
     <div class="topline"><div class="brand"><i>后</i><span>后来呢？</span></div><span class="model">Doubao-Seed-Evolving</span></div>
-    <div class="eyebrow">WHAT HAPPENED NEXT? / 2025</div>
-    <h1>把一整年的聊天，<br><span class="accent">还原成故事发生过的样子。</span></h1>
-    <p class="lead">不是只看“聊了多少”，而是找回一句约定、一次反馈和它们隔了几个月才出现的后来。</p>
+    <div class="eyebrow">CHAT RECORDS → STORY LINES</div>
+    <h1>我把一整年的聊天<br><span class="accent">丢给了 AI。</span></h1>
+    <p class="lead">结果它翻出了：27 天后真的发生的约定。</p>
+    <div class="burst">不是算<br>“谁更爱谁”</div>
     <div class="paper">
       <div class="paper-head"><span>A CLUE ACROSS TIME</span><span>27 DAYS</span></div>
       <div class="message">周末要不要去江边骑车？</div>
@@ -92,8 +137,8 @@
   <section class="poster" id="poster-2">
     <div class="topline"><div class="brand"><i>后</i><span>后来呢？</span></div><span class="model">跨月线索</span></div>
     <div class="eyebrow">A CLUE ACROSS TIME</div>
-    <h2>一句“等忙完去骑车”，<br><span class="accent">27 天后真的发生了吗？</span></h2>
-    <p class="lead">关键词只能找到“骑车”。真正想知道的是：谁先提出、有没有重排、最后是否落地。</p>
+    <h2>“等忙完去骑车”，<br><span class="accent">27 天后居然真去了！</span></h2>
+    <p class="lead">关键词只能找到“骑车”。它找的是：提出 → 重排 → 最后落地。</p>
     <div class="timeline">
       <div class="timeline-row">
         <div class="event coral"><small>03 / 09 · 发起</small><q>周末要不要去江边骑车？</q><b>E00010</b></div>
@@ -111,8 +156,8 @@
   <section class="poster" id="poster-3">
     <div class="topline"><div class="brand"><i>后</i><span>后来呢？</span></div><span class="model">视觉年鉴</span></div>
     <div class="eyebrow">YOUR CHAT IN NUMBERS</div>
-    <h2>这一年聊了什么？<br><span class="accent">聊天里还藏着哪些数字？</span></h2>
-    <p class="lead">词云负责第一眼的记忆，趣味数字把聊天习惯变成可以分享的年终总结。</p>
+    <h2>原来我们最爱<br><span class="accent">在 18:00 说话。</span></h2>
+    <p class="lead">还有：3 分钟中位回应间隔、最热闹的一天、最长连续聊天……</p>
     <div class="visual-frame"><img src="assets/10-词云与趣味数据.png" alt="聊天词云与趣味数据" /></div>
     <div class="insight-strip"><div><b>01 / 03</b><span>最热闹的一天</span></div><div><b>18:00</b><span>最常出现的时刻</span></div><div><b>3 分钟</b><span>中位回应间隔</span></div></div>
     <div class="footer"><span>词云 · 连续聊天天数 · 回应速度</span><span class="page-no">03 / 05</span></div>
@@ -121,7 +166,7 @@
   <section class="poster heat-poster" id="poster-4">
     <div class="topline"><div class="brand"><i>后</i><span>后来呢？</span></div><span class="model">年度热力图</span></div>
     <div class="eyebrow">365 DAYS OF CONVERSATION</div>
-    <h2>哪一天，<br><span class="accent">最想和对方说话？</span></h2>
+    <h2>365 天摊开后，<br><span class="accent">哪天最想和对方说话？</span></h2>
     <p class="lead">把全年聊天铺成一张热力图。颜色越深，代表那天留下的消息越多。</p>
     <div class="visual-frame"><img src="assets/11-年度活跃热力图.png" alt="年度聊天热力图" /></div>
     <div class="heat-facts"><div><b>19 个</b><span>全年活跃聊天日</span></div><div><b>2 天</b><span>最长连续有话说</span></div><div><b>01 / 03</b><span>样例里最热闹的一天</span></div><div><b>可回看</b><span>每个事实结论绑定证据编号</span></div></div>
@@ -131,7 +176,7 @@
   <section class="poster" id="poster-5">
     <div class="topline"><div class="brand"><i>后</i><span>后来呢？</span></div><span class="model">OPEN SOURCE</span></div>
     <div class="eyebrow">YOUR CHAT · YOUR KEY</div>
-    <h2>上传你的聊天记录，<br><span class="accent">生成自己的聊天年鉴。</span></h2>
+    <h2>聊天记录别只躺着，<br><span class="accent">自己生成一本年鉴。</span></h2>
     <p class="lead">项目开放上传和模型入口：可以粘贴聊天、导入文件，也可以填写自己的 Ark API Key。</p>
     <div class="entry-grid">
       <div class="entry-card"><b>01 / 放入记录</b><p>支持 TXT、MD、CSV，或直接粘贴文本。</p><div class="drop">↑<br>拖入聊天记录<br><small>当前上限 8MB</small></div></div>
